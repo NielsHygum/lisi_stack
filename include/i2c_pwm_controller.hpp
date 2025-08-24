@@ -66,19 +66,19 @@ private:
 
 I2CPWMController::I2CPWMController()
 {
-    int fd = open(I2C_DEVICE, O_RDWR);
+    fd = open(I2C_DEVICE, O_RDWR);
     if (fd < 0) {
         std::cerr << "Failed to open I2C device\n";
         std::exit(EXIT_FAILURE);
     }
-    fd_initialized = true;
+    fd_initialize = true;
 
     initPCA9685();
 }
 
 I2CPWMController::~I2CPWMController()
 {
-    if(fd_initialized)
+    if(fd_initialize)
     {
         close(fd);
     }
@@ -96,7 +96,7 @@ void I2CPWMController::initPCA9685() // make private
     if (ioctl(fd, I2C_SLAVE, PCA9685_ADDR) < 0) {
         std::cerr << "Failed to connect to PCA9685\n";
         close(fd);
-        std::exit(EXIT_FAILURE);
+        return 1;
     }
 
     // Step 1: Enter sleep mode to set frequency
