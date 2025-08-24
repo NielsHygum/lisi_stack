@@ -6,6 +6,7 @@ int main() {
     I2CPWMController i2c_pwm_controller;
 
     std::cout << "type q to quit\n";
+    std::string input = "";
     while(input != "q")
     {
 //          int pulse = 307; // 1.5 ms pulse
@@ -24,7 +25,7 @@ int main() {
             std::cin >> input;
             std::cout << "input was: " << input << "\n";
        // i2c_pwm_controller.setServoAngle(13, input) //steering
-        i2c_pwm_controller.setServoAngle(15, input) //throttle
+        i2c_pwm_controller.setServoAngle(15, std::stof(input)) //throttle
     }
 
     return 0;
