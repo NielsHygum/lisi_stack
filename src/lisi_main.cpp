@@ -79,7 +79,7 @@ int main() {
     {
 //          int pulse = 307; // 1.5 ms pulse
 //          pulse = 480;
-            uint channel = 15;
+            uint channel = 13;
             //std::cout << "current angle: " << angle << '\n';
             /*if (input == 'w')
                 pulse += 5;
