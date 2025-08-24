@@ -66,19 +66,21 @@ private:
 
 I2CPWMController::I2CPWMController()
 {
+    fd_initialized = false;
+
     fd = open(I2C_DEVICE, O_RDWR);
     if (fd < 0) {
         std::cerr << "Failed to open I2C device\n";
         std::exit(EXIT_FAILURE);
     }
-    fd_initialize = true;
+    fd_initialized = true;
 
     initPCA9685();
 }
 
 I2CPWMController::~I2CPWMController()
 {
-    if(fd_initialize)
+    if(fd_initialized)
     {
         close(fd);
     }
