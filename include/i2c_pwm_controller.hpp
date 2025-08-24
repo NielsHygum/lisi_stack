@@ -98,7 +98,7 @@ void I2CPWMController::initPCA9685() // make private
     if (ioctl(fd, I2C_SLAVE, PCA9685_ADDR) < 0) {
         std::cerr << "Failed to connect to PCA9685\n";
         close(fd);
-        return 1;
+        std::exit(EXIT_FAILURE);
     }
 
     // Step 1: Enter sleep mode to set frequency
