@@ -26,6 +26,7 @@ int main() {
             std::cin >> input;
             int channel = std::stoi(input);
             std::cout << "set angle" << std::endl;
+        std::cin >> input;
             float angle = std::stof(input);
             std::cout << "input was: " << input << "\n";
        // i2c_pwm_controller.setServoAngle(13, input) //steering //channel 13 steering channel 15 throttle
